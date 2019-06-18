@@ -48,5 +48,53 @@ profs %>%
 
 ```{r}
 
+profs %>%  
+    ggplot(aes(x= bty_avg, y=score))+
+    geom_point()
+
+
+beleza = lm(score ~ bty_avg, data = profs)
+
+tidy(beleza)
+
+```
+```{r}
+tidy(beleza, conf.int =TRUE, conf.level = .95)
+
+```
+```{r}
+
+profs %>%  
+    ggplot(aes(x= bty_avg, y=gender))+
+    geom_point()
+
+
+beleza_gender = lm(score ~ bty_avg + gender, data = profs)
+
+tidy(beleza_gender)
+
+tidy(beleza_gender, conf.int =TRUE, conf.level = .95)
+
+
+```
+
+```{r}
+
+profs %>%  
+    ggplot(aes(x= bty_avg, y=gender))+
+    geom_point()
+
+
+beleza_gender_age = lm(score ~ bty_avg + gender + age, data = profs)
+
+tidy(beleza_gender_age)
+
+tidy(beleza_gender_age, conf.int =TRUE, conf.level = .95)
+
+glance(beleza_gender_age)
+
+
+```
+
 ```
 
